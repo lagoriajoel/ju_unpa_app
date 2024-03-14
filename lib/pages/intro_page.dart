@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ju_unpa_app/pages/disciplinasPage.dart';
 import 'package:ju_unpa_app/pages/rulesPage.dart';
+import 'package:ju_unpa_app/pages/ubications_screen.dart';
 
 class intro_page extends StatelessWidget {
   const intro_page({super.key});
@@ -62,13 +63,13 @@ class intro_page extends StatelessWidget {
                   textColor: Colors.white70,
                 )),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: ListTile(
-                  leading: Icon(
+                  leading: const Icon(
                     Icons.sports_handball,
                     color: Colors.white,
                   ),
-                  title: Text(
+                  title: const Text(
                     'Disciplinas',
                   ),
                   textColor: Colors.white70,
@@ -80,18 +81,37 @@ class intro_page extends StatelessWidget {
                   }),
             ),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               child: ListTile(
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => rulesPage()));
                 },
-                leading: Icon(
+                leading: const Icon(
                   Icons.info,
                   color: Colors.white,
                 ),
-                title: Text(
+                title: const Text(
                   'Reglamentos',
+                ),
+                textColor: Colors.white70,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UbicationScreen()));
+                },
+                leading: const Icon(
+                  Icons.info,
+                  color: Colors.white,
+                ),
+                title: const Text(
+                  'Ubicaciones',
                 ),
                 textColor: Colors.white70,
               ),
