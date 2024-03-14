@@ -31,29 +31,31 @@ class sportCard extends StatelessWidget {
               children: [
                 Ink.image(
                   image: NetworkImage(image),
-                  height: 150,
+                  height: 101,
                   fit: BoxFit.cover,
-                  colorFilter: ColorFilter.linearToSrgbGamma(),
+                  colorFilter: const ColorFilter.linearToSrgbGamma(),
                 ),
               ],
             ),
             Container(
-              color: const Color.fromARGB(255, 55, 118, 118),
+              padding: EdgeInsets.all(5.0),
+              color: Color.fromARGB(255, 64, 139, 104),
               alignment: AlignmentDirectional.bottomStart,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
                     nombre,
-                    style: TextStyle(
-                        fontSize: 25,
+                    style: const TextStyle(
+                        fontSize: 20,
                         fontWeight: FontWeight.w300,
                         color: Color.fromRGBO(249, 250, 250, 1)),
                   ),
                   Text(categoria,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontWeight: FontWeight.w100,
                           color: Colors.white,
-                          fontSize: 18))
+                          fontSize: 15))
                 ],
               ),
             ),
