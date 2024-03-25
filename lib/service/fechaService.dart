@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ju_unpa_app/API/apiData.dart';
 import 'package:ju_unpa_app/models/fecha.dart';
 
 import 'package:http/http.dart' as http;
@@ -18,5 +19,9 @@ class fechaService {
     }
 
     return fecha.recipesFromSnapshot(_temp);
+  }
+
+  static Future<List<fecha>> getFechaListApi(int sportId) async {
+    return fecha.recipesFromSnapshot(fechaData);
   }
 }

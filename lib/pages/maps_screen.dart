@@ -67,7 +67,7 @@ class _MapScreenState extends State<MapScreen> {
 
   loadData() async {
     final Uint8List markerIcon =
-        await getBytesFromAsset("assets/user.png", 100);
+        await getBytesFromAsset("assets/images/user.png", 100);
     _markers.add(Marker(
         markerId: const MarkerId("Ubicacion"),
         position: LatLng(
@@ -75,7 +75,7 @@ class _MapScreenState extends State<MapScreen> {
         icon: BitmapDescriptor.fromBytes(markerIcon),
         infoWindow: const InfoWindow(title: 'Mi Ubicación')));
     final Uint8List markerIcon2 =
-        await getBytesFromAsset("assets/marker3.png", 100);
+        await getBytesFromAsset("assets/images/marker3.png", 100);
     _markers.add(Marker(
         markerId: const MarkerId("Destino"),
         position:

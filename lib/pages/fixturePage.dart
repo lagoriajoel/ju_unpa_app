@@ -16,7 +16,8 @@ class _fixturePageState extends State<fixturePage> {
   bool _isLoading = true;
 
   Future<void> getFecha() async {
-    fechas = await fechaService.getFechaList(widget.id);
+    //fechas = await fechaService.getFechaList(widget.id);
+    fechas = await fechaService.getFechaListApi(widget.id);
 
     setState(() {
       _isLoading = false;
@@ -33,55 +34,6 @@ class _fixturePageState extends State<fixturePage> {
     getFecha();
   }
 
-  List<dynamic> listFechas = [
-    {
-      'description': 'FECHA 1',
-      'games': [
-        {
-          'lugar': 'caleta olivia',
-          'horario': '16:30',
-          'fecha': '30/10/2023',
-          'score_1': '2',
-          'score_2': '1',
-          'team_1': {'nombre': 'UACO'},
-          'team_2': {'nombre': 'UARG'}
-        },
-        {
-          'lugar': 'caleta olivia',
-          'horario': '18:00',
-          'fecha': '30/10/2023',
-          'score_1': '5',
-          'score_2': '0',
-          'team_1': {'nombre': 'UACO'},
-          'team_2': {'nombre': 'UARG'}
-        }
-      ]
-    },
-    {
-      'description': 'FECHA 2',
-      'games': [
-        {
-          'lugar': 'pico truncado',
-          'horario': '16:30',
-          'fecha': '30/10/2023',
-          'score_1': '2',
-          'score_2': '1',
-          'team_1': {'nombre': 'UACO'},
-          'team_2': {'nombre': 'UARG'}
-        },
-        {
-          'lugar': 'pico truncado',
-          'horario': '18:00',
-          'fecha': '30/10/2023',
-          'score_1': '5',
-          'score_2': '0',
-          'team_1': {'nombre': 'UASJ'},
-          'team_2': {'nombre': 'UART'}
-        }
-      ]
-    }
-  ];
-
   Widget renderFechas() {
     return ListView(
       children: fechas
@@ -93,7 +45,7 @@ class _fixturePageState extends State<fixturePage> {
                   height: 40,
                   width: double.infinity,
                   child: Text(item.description,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight
                               .bold))), //Mostrar el titulo principal aqui

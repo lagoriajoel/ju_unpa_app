@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:ju_unpa_app/API/apiData.dart';
 import 'package:ju_unpa_app/models/team.dart';
 
 class teamService {
@@ -18,5 +19,9 @@ class teamService {
     }
 
     return team.recipesFromSnapshot(_temp);
+  }
+
+  static Future<List<team>> getTeamOfSportApi(idSport) async {
+    return team.recipesFromSnapshot(team1Data);
   }
 }

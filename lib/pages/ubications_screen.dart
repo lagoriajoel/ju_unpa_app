@@ -76,36 +76,78 @@ class _UbicationScreen extends State<UbicationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: const BackButton(color: Colors.black),
-        elevation: 0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(
-          child: ListView.builder(
-              itemCount: gimsList.length,
-              itemBuilder: (context, index) {
-                return ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MapScreen(
-                                    startPosition: startPosition,
-                                    endPosition: gimsList[index].position,
-                                    distance: getDistance(
-                                        startPosition!.latitude,
-                                        startPosition!.longitude,
-                                        gimsList[index].position.latitude,
-                                        gimsList[index].position.longitude),
-                                  )));
-                    },
-                    child: Text(gimsList[index].nombre));
-              }),
-        ),
+      body: Stack(
+        children: [
+          Container(
+            height: size.height * .25,
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(220, 39, 90, 90),
+              image: DecorationImage(
+                  alignment: Alignment.bottomCenter,
+                  image: AssetImage("assets/images/logo1.png"),
+                  opacity: 0.8,
+                  scale: 5.0),
+            ),
+          ),
+          SafeArea(
+              child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Builder(
+                    builder: (context) => IconButton(
+                          icon: const Icon(
+                            Icons.clear_all,
+                            color: Colors.white,
+                            size: 34,
+                          ),
+                          onPressed: () => Scaffold.of(context).openDrawer(),
+                        )),
+                const SizedBox(
+                  height: 150,
+                ),
+                Expanded(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: ListView.builder(
+                        itemCount: gimsList.length,
+                        itemBuilder: (context, index) {
+                          return ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      Color.fromARGB(220, 39, 90, 90)),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MapScreen(
+                                              startPosition: startPosition,
+                                              endPosition:
+                                                  gimsList[index].position,
+                                              distance: getDistance(
+                                                  startPosition!.latitude,
+                                                  startPosition!.longitude,
+                                                  gimsList[index]
+                                                      .position
+                                                      .latitude,
+                                                  gimsList[index]
+                                                      .position
+                                                      .longitude),
+                                            )));
+                              },
+                              child: Text(gimsList[index].nombre));
+                        }),
+                  ),
+                ))
+              ],
+            ),
+          ))
+        ],
       ),
     );
   }

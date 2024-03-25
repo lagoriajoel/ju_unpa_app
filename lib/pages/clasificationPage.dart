@@ -17,7 +17,8 @@ class _clasificationPageState extends State<clasificationPage> {
   bool _isLoading = true;
 
   Future<void> getEquipos() async {
-    equipos = await teamService.getTeamOfSport(widget.id);
+    // equipos = await teamService.getTeamOfSport(widget.id);
+    equipos = await teamService.getTeamOfSportApi(widget.id);
 
     setState(() {
       _isLoading = false;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ju_unpa_app/pages/intro_page.dart';
+import 'package:ju_unpa_app/constants/constants.dart';
+import 'package:ju_unpa_app/pages/home_page.dart';
 
 void main() {
   runApp(const ju_unpa_app());
@@ -12,8 +13,11 @@ class ju_unpa_app extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: intro_page(),
+      home: const HomePage(),
       theme: ThemeData(primarySwatch: Colors.lightGreen),
+      // theme: ThemeData(
+      //     textTheme:
+      //         Theme.of(context).textTheme.apply(displayColor: colorPrimary)),
     );
   }
 }
