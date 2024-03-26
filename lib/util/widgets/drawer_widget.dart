@@ -11,20 +11,29 @@ class drawerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color.fromRGBO(0, 97, 99, 1),
+      backgroundColor: Color.fromARGB(241, 5, 76, 77),
       child: Column(
         children: [
           //logo
           DrawerHeader(
-              child: Image.asset(
-            'lib/images/logoUNPA.png',
-            //color: Color.fromARGB(26, 0, 0, 0),
-          )),
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    alignment: Alignment.center,
+                    image: AssetImage("assets/images/logo123.png"),
+                    fit: BoxFit.contain),
+              ),
+            ),
+          ),
 
           //divider
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 80.0),
-            child: Divider(),
+            child: Divider(
+              color: Colors.white,
+              height: 10,
+              thickness: 1.5,
+            ),
           ),
           //pages
           Padding(
@@ -41,7 +50,7 @@ class drawerWidget extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: const Text(
-                  'Home',
+                  'HOME',
                 ),
                 textColor: Colors.white70,
               )),
@@ -53,7 +62,7 @@ class drawerWidget extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: const Text(
-                  'Disciplinas',
+                  'DEPORTES',
                 ),
                 textColor: Colors.white70,
                 onTap: () {
@@ -71,7 +80,7 @@ class drawerWidget extends StatelessWidget {
                 color: Colors.white,
               ),
               title: const Text(
-                'Reglamentos',
+                'INFORMACIÓN',
               ),
               textColor: Colors.white70,
               onTap: () {

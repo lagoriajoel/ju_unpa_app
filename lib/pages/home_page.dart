@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ju_unpa_app/pages/disciplinasPage.dart';
 import 'package:ju_unpa_app/pages/info_page.dart';
 import 'package:ju_unpa_app/pages/ubications_screen.dart';
+import 'package:ju_unpa_app/util/widgets/category_cards.dart';
 import 'package:ju_unpa_app/util/widgets/drawer_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,14 +18,14 @@ class HomePage extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            height: size.height * .45,
+            height: size.height * .40,
             decoration: const BoxDecoration(
               color: Color.fromARGB(220, 39, 90, 90),
               image: DecorationImage(
-                  alignment: Alignment.bottomCenter,
-                  image: AssetImage("assets/images/logo3.png"),
+                  alignment: Alignment.center,
+                  image: AssetImage("assets/images/logo04.png"),
                   opacity: 0.8,
-                  scale: 5.0),
+                  scale: 1.5),
             ),
           ),
           SafeArea(
@@ -33,33 +34,41 @@ class HomePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Builder(
-                      builder: (context) => IconButton(
-                            icon: const Icon(
-                              Icons.clear_all_rounded,
+                  Row(
+                    children: [
+                      Builder(
+                          builder: (context) => IconButton(
+                                icon: const Icon(
+                                  Icons.clear_all_rounded,
+                                  color: Colors.white,
+                                  size: 34,
+                                ),
+                                onPressed: () =>
+                                    Scaffold.of(context).openDrawer(),
+                              )),
+                      const Center(
+                        child: Text(
+                          "JUEGOS UNIVERSITARIOS",
+                          style: TextStyle(
+                              fontSize: 25,
                               color: Colors.white,
-                              size: 34,
-                            ),
-                            onPressed: () => Scaffold.of(context).openDrawer(),
-                          )),
-                  const Text(
-                    "JUEGOS UNIVERSITARIOS",
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontFamily: AutofillHints.birthday,
-                        fontWeight: FontWeight.w300),
+                              fontFamily: AutofillHints.birthday,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      ),
+                    ],
                   ),
-                  const Text(
-                    "UNPA",
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                        fontFamily: AutofillHints.birthday,
-                        fontWeight: FontWeight.bold),
-                  ),
+                  // const Text(
+                  //   "UNPA",
+                  //   style: TextStyle(
+                  //       fontSize: 25,
+                  //       color: Colors.white,
+                  //       fontFamily: AutofillHints.birthday,
+                  //       fontWeight: FontWeight.bold,
+                  //       fontStyle: FontStyle.italic),
+                  // ),
                   const SizedBox(
-                    height: 230,
+                    height: 280,
                   ),
                   Expanded(
                     child: GridView.count(
@@ -127,68 +136,6 @@ class ButtonNavigate extends StatelessWidget {
                 color: isActive ? Colors.amberAccent : Colors.black87),
           )
         ],
-      ),
-    );
-  }
-}
-
-class categoryCard extends StatelessWidget {
-  final String title;
-  final String svgSrc;
-  final Widget page;
-  const categoryCard({
-    super.key,
-    required this.title,
-    required this.svgSrc,
-    required this.page,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(11),
-      child: Container(
-        padding: const EdgeInsets.all(0.8),
-        decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 245, 245, 244),
-            borderRadius: BorderRadius.circular(11),
-            boxShadow: const [
-              BoxShadow(
-                  offset: Offset(0, 17),
-                  blurRadius: 17,
-                  spreadRadius: -18,
-                  color: Color.fromARGB(220, 59, 171, 151))
-            ]),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => page),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                children: [
-                  const Spacer(),
-                  SvgPicture.asset(
-                    svgSrc,
-                    height: 50,
-                    width: 60,
-                  ),
-                  const Spacer(),
-                  Text(
-                    title,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
       ),
     );
   }

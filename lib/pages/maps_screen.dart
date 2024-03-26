@@ -117,19 +117,16 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       // extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromARGB(241, 5, 76, 77),
         elevation: 0,
         leading: backButtonVisible
             ? IconButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                  ),
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
                 ),
               )
             : null,

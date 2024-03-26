@@ -7,7 +7,9 @@ import 'package:ju_unpa_app/util/widgets/drawer_widget.dart';
 // ignore: must_be_immutable
 class programsPage extends StatelessWidget {
   int idSport;
-  programsPage(this.idSport, {super.key});
+  String nameSport;
+  String categoriaSport;
+  programsPage(this.idSport, this.nameSport, this.categoriaSport, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +19,12 @@ class programsPage extends StatelessWidget {
         body: Stack(
           children: [
             Container(
-              height: size.height * .25,
+              height: size.height * .11,
               decoration: const BoxDecoration(
                 color: Color.fromARGB(220, 39, 90, 90),
                 image: DecorationImage(
                     alignment: Alignment.bottomCenter,
-                    image: AssetImage("assets/images/logo3.png"),
+                    image: AssetImage("assets/images/baner02.png"),
                     opacity: 0.8,
                     scale: 5.0),
               ),
@@ -56,7 +58,17 @@ class programsPage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 150,
+                    height: 10,
+                  ),
+                  Center(
+                    child: Text("$nameSport $categoriaSport",
+                        style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 22,
+                            fontWeight: FontWeight.w400)),
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                   Expanded(
                     child: DefaultTabController(

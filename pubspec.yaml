@@ -69,10 +69,16 @@ flutter:
   assets:
     - lib/images/
     - assets/icons/
+    - assets/images/logo04.png
     - assets/images/user.png
     - assets/images/marker3.png
     - assets/images/logo3.png
-    - assets/images/logo1.png
+    - assets/images/logo1234.png
+    - assets/images/logo123.png
+    - assets/images/baner01.png
+    - assets/images/baner02.png
+
+
 
   #   - images/a_dot_ham.jpeg
 

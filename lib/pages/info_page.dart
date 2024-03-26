@@ -12,14 +12,14 @@ class infoPage extends StatelessWidget {
         body: Stack(
           children: [
             Container(
-              height: size.height * .25,
+              height: size.height * .11,
               decoration: const BoxDecoration(
                 color: Color.fromARGB(220, 39, 90, 90),
                 image: DecorationImage(
                     alignment: Alignment.bottomCenter,
-                    image: AssetImage("assets/images/logo3.png"),
+                    image: AssetImage("assets/images/baner02.png"),
                     opacity: 0.8,
-                    scale: 5.0),
+                    scale: 1.5),
               ),
             ),
             SafeArea(
@@ -41,7 +41,7 @@ class infoPage extends StatelessWidget {
                                     Scaffold.of(context).openDrawer(),
                               )),
                       const Text(
-                        "Información",
+                        "INFORMACIÓN",
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.white,
@@ -51,17 +51,25 @@ class infoPage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 150,
+                    height: 30,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                        height: 500,
-                        child: Center(
-                          child: Text(
+                  const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Vuelven los Juegos UNPA",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
                               "Luego de 2 años signados por la pandemia, la Universidad Nacional de la Patagonia Austral anunció que durante los días 27 y 28 de agosto volverán a realizarse los tradicionales Juegos UNPA, que en su XIV Edición tendrán como sede a la ciudad de Río Turbio y reunirán a estudiantes de las cuatro Unidades Académicas de nuestra casa de altos estudios.Este evento, que constituye en uno de los más importantes del deporte universitario de la región Patagónica, permitirá que más de 180 estudiantes deportistas de nuestra institución vuelvan a encontrarse a través de la práctica deportiva, en esta ocasión en las disciplinas Basquetbol masculino, Futsal femenino, Voleibol masculino, Ajedrez, Voleibol Femenino, Tenis de mesa y Futsal masculino.Desde la Coordinación de Deportes, el Prof. Mariano Nieto indicó que “hay un gran entusiasmo por parte de los y las estudiantes ante el regreso de este espacio que les permite encontrar en su Universidad no solo la posibilidad de llevar adelante su formación académica, sino también la práctica y formación deportiva”.Por su parte, la directora general de Bienestar Universitario, Prof. Claudia Ferreyra, manifestó que “desde la organización se ha trabajado a la par con las autoridades y gestión de la Unidad Académica Río Turbio, con la Secretaria de Hacienda y con las Áreas de Deportes y las Direcciones de Acceso y Permanencia de todas las Unidades Académicas” y agradeció especialmente “el compromiso asumido por la Municipalidad de Río Turbio”."),
-                        )),
-                  )
+                        ],
+                      ))
                 ],
               ),
             ))

@@ -82,12 +82,12 @@ class _UbicationScreen extends State<UbicationScreen> {
       body: Stack(
         children: [
           Container(
-            height: size.height * .25,
+            height: size.height * .11,
             decoration: const BoxDecoration(
               color: Color.fromARGB(220, 39, 90, 90),
               image: DecorationImage(
                   alignment: Alignment.bottomCenter,
-                  image: AssetImage("assets/images/logo1.png"),
+                  image: AssetImage("assets/images/baner02.png"),
                   opacity: 0.8,
                   scale: 5.0),
             ),
@@ -98,17 +98,30 @@ class _UbicationScreen extends State<UbicationScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Builder(
-                    builder: (context) => IconButton(
-                          icon: const Icon(
-                            Icons.clear_all,
-                            color: Colors.white,
-                            size: 34,
-                          ),
-                          onPressed: () => Scaffold.of(context).openDrawer(),
-                        )),
+                Row(
+                  children: [
+                    Builder(
+                        builder: (context) => IconButton(
+                              icon: const Icon(
+                                Icons.clear_all,
+                                color: Colors.white,
+                                size: 34,
+                              ),
+                              onPressed: () =>
+                                  Scaffold.of(context).openDrawer(),
+                            )),
+                    const Text(
+                      "UBICACIONES",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                          fontFamily: AutofillHints.birthday,
+                          fontWeight: FontWeight.w300),
+                    )
+                  ],
+                ),
                 const SizedBox(
-                  height: 150,
+                  height: 20,
                 ),
                 Expanded(
                     child: Padding(
@@ -140,7 +153,10 @@ class _UbicationScreen extends State<UbicationScreen> {
                                                       .longitude),
                                             )));
                               },
-                              child: Text(gimsList[index].nombre));
+                              child: Text(
+                                gimsList[index].nombre,
+                                style: TextStyle(color: Colors.white),
+                              ));
                         }),
                   ),
                 ))

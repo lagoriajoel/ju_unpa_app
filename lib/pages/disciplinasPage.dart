@@ -46,14 +46,14 @@ class _disciplinasPageState extends State<disciplinasPage> {
         body: Stack(
           children: [
             Container(
-              height: size.height * .25,
+              height: size.height * .11,
               decoration: const BoxDecoration(
                 color: Color.fromARGB(220, 39, 90, 90),
                 image: DecorationImage(
                     alignment: Alignment.bottomCenter,
-                    image: AssetImage("assets/images/logo3.png"),
+                    image: AssetImage("assets/images/baner02.png"),
                     opacity: 0.8,
-                    scale: 5.0),
+                    scale: 3.0),
               ),
             ),
             SafeArea(
@@ -85,7 +85,7 @@ class _disciplinasPageState extends State<disciplinasPage> {
                     ],
                   ),
                   const SizedBox(
-                    height: 150,
+                    height: 20,
                   ),
                   Expanded(
                     child: _isLoading

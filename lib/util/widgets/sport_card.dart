@@ -19,12 +19,14 @@ class sportCard extends StatelessWidget {
     return Card(
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(5),
       ),
       child: InkWell(
         onTap: () => {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => programsPage(id)))
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => programsPage(id, nombre, categoria)))
         },
         child: Column(
           children: [
