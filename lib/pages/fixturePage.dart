@@ -16,14 +16,19 @@ class _fixturePageState extends State<fixturePage> {
   bool _isLoading = true;
 
   Future<void> getFecha() async {
-    //fechas = await fechaService.getFechaList(widget.id);
-    fechas = await fechaService.getFechaListApi(widget.id);
+    try {
+      fechas = await fechaService.getFechaList(widget.id);
 
-    setState(() {
-      _isLoading = false;
-    });
+      setState(() {
+        _isLoading = false;
+      });
 
-    print(fechas);
+      print(fechas);
+    } catch (e) {
+      setState(() {
+        print('Error: ');
+      });
+    }
   }
 
   @override
@@ -65,7 +70,7 @@ class _fixturePageState extends State<fixturePage> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    game['team_1']['nombre'],
+                                    game['team_1']['name'],
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),
@@ -77,7 +82,7 @@ class _fixturePageState extends State<fixturePage> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    game['team_2']['nombre'],
+                                    game['team_2']['name'],
                                     style:
                                         TextStyle(fontWeight: FontWeight.bold),
                                   ),
@@ -87,13 +92,13 @@ class _fixturePageState extends State<fixturePage> {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(3.0),
-                              child: Text(game['lugar']),
+                              child: Text(game['place']),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(3.0),
-                              child: Text(game['fecha']),
+                              child: Text(game['date']),
                             ),
-                            Text(game['horario']),
+                            Text(game['schedule']),
                           ],
                         ),
                       )

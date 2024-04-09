@@ -1,12 +1,12 @@
 class team {
-  final String nombre;
+  final String name;
   final int matchWon;
   final int matchLost;
   final int matchTied;
   final int point;
 
   team(
-      {required this.nombre,
+      {required this.name,
       required this.matchWon,
       required this.matchLost,
       required this.matchTied,
@@ -14,7 +14,7 @@ class team {
 
   factory team.fromJson(dynamic json) {
     return team(
-        nombre: json['nombre'] as String,
+        name: json['name'] as String,
         matchWon: json['matchWon'] as int,
         matchLost: json['matchLost'] as int,
         matchTied: json['matchTied'] as int,
@@ -29,6 +29,6 @@ class team {
 
   @override
   String toString() {
-    return '{nombre: $nombre, puntos: $point}';
+    return '{nombre: $name, puntos: $point}';
   }
 }

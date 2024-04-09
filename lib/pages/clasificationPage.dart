@@ -17,14 +17,16 @@ class _clasificationPageState extends State<clasificationPage> {
   bool _isLoading = true;
 
   Future<void> getEquipos() async {
-    // equipos = await teamService.getTeamOfSport(widget.id);
-    equipos = await teamService.getTeamOfSportApi(widget.id);
+    try {
+      equipos = await teamService.getTeamOfSport(widget.id);
+      // equipos = await teamService.getTeamOfSportApi(widget.id);
 
-    setState(() {
-      _isLoading = false;
-    });
+      setState(() {
+        _isLoading = false;
+      });
 
-    print(equipos);
+      print(equipos);
+    } catch (e) {}
   }
 
   @override
@@ -36,10 +38,10 @@ class _clasificationPageState extends State<clasificationPage> {
   }
 
   List<team> teamsList = [
-    team(nombre: 'UACO', matchWon: 2, matchLost: 2, matchTied: 2, point: 6),
-    team(nombre: 'UARG', matchWon: 2, matchLost: 2, matchTied: 2, point: 6),
-    team(nombre: 'UASJ', matchWon: 2, matchLost: 2, matchTied: 2, point: 6),
-    team(nombre: 'UART', matchWon: 2, matchLost: 2, matchTied: 2, point: 6),
+    team(name: 'UACO', matchWon: 2, matchLost: 2, matchTied: 2, point: 6),
+    team(name: 'UARG', matchWon: 2, matchLost: 2, matchTied: 2, point: 6),
+    team(name: 'UASJ', matchWon: 2, matchLost: 2, matchTied: 2, point: 6),
+    team(name: 'UART', matchWon: 2, matchLost: 2, matchTied: 2, point: 6),
   ];
 
   @override
@@ -64,7 +66,7 @@ class _clasificationPageState extends State<clasificationPage> {
 
   List<DataRow> getRows(List<team> teams) => teams.map((team team) {
         final cells = [
-          team.nombre,
+          team.name,
           team.matchWon,
           team.matchLost,
           team.matchTied,

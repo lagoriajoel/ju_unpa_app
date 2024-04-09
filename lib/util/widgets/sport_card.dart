@@ -48,13 +48,13 @@ class sportCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    nombre,
+                    nombre.toUpperCase(),
                     style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w300,
                         color: Color.fromRGBO(249, 250, 250, 1)),
                   ),
-                  Text(categoria,
+                  Text(categoria.toUpperCase(),
                       style: const TextStyle(
                           fontWeight: FontWeight.w100,
                           color: Colors.white,

@@ -43,9 +43,9 @@ class fechaCard extends StatelessWidget {
                 itemCount: games.length,
                 itemBuilder: (context, index) {
                   return gameCard(
-                    lugar: games[index].lugar,
-                    horario: games[index].horario,
-                    fecha: games[index].fecha,
+                    lugar: games[index].place,
+                    horario: games[index].schedule,
+                    fecha: games[index].date,
                     score_1: games[index].score_1,
                     score_2: games[index].score_2,
                     team_1: games[index].team_1,

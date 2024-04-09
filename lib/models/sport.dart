@@ -1,20 +1,20 @@
 class sport {
   final int id;
-  final String nombre;
-  final String categoria;
+  final String name;
+  final String category;
   final String image;
 
   sport(
       {required this.id,
-      required this.nombre,
-      required this.categoria,
+      required this.name,
+      required this.category,
       required this.image});
 
   factory sport.fromJson(dynamic json) {
     return sport(
         id: json['id'] as int,
-        nombre: json['nombre'] as String,
-        categoria: json['categoria'] as String,
+        name: json['name'] as String,
+        category: json['category'] as String,
         image: json['image'] as String);
   }
 
@@ -26,6 +26,6 @@ class sport {
 
   @override
   String toString() {
-    return '{id: $id,nombre: $nombre, categoria: $categoria, image: $image}';
+    return '{id: $id,nombre: $name, categoria: $category, image: $image}';
   }
 }

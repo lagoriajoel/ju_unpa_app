@@ -21,7 +21,7 @@ class _disciplinasPageState extends State<disciplinasPage> {
   bool _isLoading = true;
 
   Future<void> getSports() async {
-    sports = await sportService.getSportListApi();
+    sports = await sportService.getSportList();
     setState(() {
       _isLoading = false;
     });
@@ -107,8 +107,8 @@ class _disciplinasPageState extends State<disciplinasPage> {
                                 itemBuilder: (context, index) {
                                   return sportCard(
                                       id: sports[index].id,
-                                      nombre: sports[index].nombre,
-                                      categoria: sports[index].categoria,
+                                      nombre: sports[index].name,
+                                      categoria: sports[index].category,
                                       image: sports[index].image);
                                 }),
                           ),

@@ -1,8 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:ju_unpa_app/models/info.dart';
+import 'package:ju_unpa_app/service/infoService.dart';
 import 'package:ju_unpa_app/util/widgets/drawer_widget.dart';
+import 'package:ju_unpa_app/util/widgets/info_card.dart';
 
-class infoPage extends StatelessWidget {
+class infoPage extends StatefulWidget {
   const infoPage({super.key});
+
+  @override
+  State<infoPage> createState() => _infoPageState();
+}
+//List<dynamic> information = [];
+
+class _infoPageState extends State<infoPage> {
+  List<info> information = [];
+  bool _isLoading = true;
+
+  Future<void> getInformation() async {
+    information = await infoService.getInfoList();
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    print(information);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // TODO: implement initState
+
+    getInformation();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,23 +83,32 @@ class infoPage extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Vuelven los Juegos UNPA",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                  Expanded(
+                    child: _isLoading
+                        ? const Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: GridView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 1,
+                                        crossAxisSpacing: 8.0,
+                                        mainAxisSpacing: 8.0,
+                                        mainAxisExtent: 160),
+                                itemCount: information.length,
+                                itemBuilder: (context, index) {
+                                  return infoCard(
+                                    id: information[index].id,
+                                    title_info: information[index].title_info,
+                                    body_info: information[index].body_info,
+                                  );
+                                }),
                           ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                              "Luego de 2 años signados por la pandemia, la Universidad Nacional de la Patagonia Austral anunció que durante los días 27 y 28 de agosto volverán a realizarse los tradicionales Juegos UNPA, que en su XIV Edición tendrán como sede a la ciudad de Río Turbio y reunirán a estudiantes de las cuatro Unidades Académicas de nuestra casa de altos estudios.Este evento, que constituye en uno de los más importantes del deporte universitario de la región Patagónica, permitirá que más de 180 estudiantes deportistas de nuestra institución vuelvan a encontrarse a través de la práctica deportiva, en esta ocasión en las disciplinas Basquetbol masculino, Futsal femenino, Voleibol masculino, Ajedrez, Voleibol Femenino, Tenis de mesa y Futsal masculino.Desde la Coordinación de Deportes, el Prof. Mariano Nieto indicó que “hay un gran entusiasmo por parte de los y las estudiantes ante el regreso de este espacio que les permite encontrar en su Universidad no solo la posibilidad de llevar adelante su formación académica, sino también la práctica y formación deportiva”.Por su parte, la directora general de Bienestar Universitario, Prof. Claudia Ferreyra, manifestó que “desde la organización se ha trabajado a la par con las autoridades y gestión de la Unidad Académica Río Turbio, con la Secretaria de Hacienda y con las Áreas de Deportes y las Direcciones de Acceso y Permanencia de todas las Unidades Académicas” y agradeció especialmente “el compromiso asumido por la Municipalidad de Río Turbio”."),
-                        ],
-                      ))
+                  )
                 ],
               ),
             ))

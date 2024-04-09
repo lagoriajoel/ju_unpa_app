@@ -78,9 +78,9 @@ class HomePage extends StatelessWidget {
                       mainAxisSpacing: 15,
                       children: <Widget>[
                         categoryCard(
-                            title: "Deporte",
+                            title: "Torneos",
                             page: disciplinasPage(),
-                            svgSrc: "assets/icons/sports.svg"),
+                            svgSrc: "assets/icons/trophy.svg"),
                         categoryCard(
                             title: "Ubicaciones",
                             page: UbicationScreen(),
@@ -90,9 +90,9 @@ class HomePage extends StatelessWidget {
                             page: infoPage(),
                             svgSrc: "assets/icons/info.svg"),
                         categoryCard(
-                            title: "Torneos",
+                            title: "Calendario",
                             page: disciplinasPage(),
-                            svgSrc: "assets/icons/trophy.svg"),
+                            svgSrc: "assets/icons/calendar.svg"),
                       ],
                     ),
                   )

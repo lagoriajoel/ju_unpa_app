@@ -1,16 +1,16 @@
 class game {
-  final String fecha;
-  final String lugar;
-  final String horario;
+  final String date;
+  final String place;
+  final String schedule;
   final String score_1;
   final String score_2;
   final String team_1;
   final String team_2;
 
   game(
-      {required this.fecha,
-      required this.lugar,
-      required this.horario,
+      {required this.date,
+      required this.place,
+      required this.schedule,
       required this.score_1,
       required this.score_2,
       required this.team_1,
@@ -18,9 +18,9 @@ class game {
 
   factory game.fromJson(dynamic json) {
     return game(
-        fecha: json['nombre'] as String,
-        lugar: json['lugar'] as String,
-        horario: json['horario'] as String,
+        date: json['Date'] as String,
+        place: json['place'] as String,
+        schedule: json['schedule'] as String,
         score_1: json['score_1'] as String,
         score_2: json['score_2'] as String,
         team_1: json['team_1'] as String,
