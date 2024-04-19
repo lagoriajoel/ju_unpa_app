@@ -51,6 +51,7 @@ class _MapScreenState extends State<MapScreen> {
       zoom: 13.1,
     );
     loadData();
+    print(widget.endPosition);
   }
 
   //imagen para el marcador

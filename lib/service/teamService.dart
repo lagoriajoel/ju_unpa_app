@@ -4,9 +4,10 @@ import 'package:http/http.dart' as http;
 import 'package:ju_unpa_app/API/apiData.dart';
 import 'package:ju_unpa_app/constants/constants.dart';
 import 'package:ju_unpa_app/models/team.dart';
+import 'package:ju_unpa_app/util/widgets/Error_handler.dart';
 
 class teamService {
-  static Future<List<team>> getTeamOfSport(idSport) async {
+  static Future<ErrorHandler> getTeamOfSport(idSport) async {
     try {
       int id = idSport;
       var url = '${urlAPI}teams/listOfSport/$id';
@@ -21,11 +22,11 @@ class teamService {
           _temp.add(i);
         }
 
-        return team.recipesFromSnapshot(_temp);
+        return ErrorHandler(null, team.recipesFromSnapshot(_temp));
       }
       throw 'Invalid';
     } catch (e) {
-      rethrow;
+      return ErrorHandler(e.toString(), null);
     }
   }
 

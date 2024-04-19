@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ju_unpa_app/pages/calendar_screen.dart';
 import 'package:ju_unpa_app/pages/disciplinasPage.dart';
 import 'package:ju_unpa_app/pages/info_page.dart';
 import 'package:ju_unpa_app/pages/ubications_screen.dart';
@@ -85,13 +86,13 @@ class HomePage extends StatelessWidget {
                             title: "Ubicaciones",
                             page: UbicationScreen(),
                             svgSrc: "assets/icons/location.svg"),
-                        categoryCard(
+                        const categoryCard(
                             title: "Información",
                             page: infoPage(),
                             svgSrc: "assets/icons/info.svg"),
                         categoryCard(
                             title: "Calendario",
-                            page: disciplinasPage(),
+                            page: calendarScreen(),
                             svgSrc: "assets/icons/calendar.svg"),
                       ],
                     ),

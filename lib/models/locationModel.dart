@@ -1,27 +1,27 @@
-class location {
+class locationModel {
   final int id;
   final String name;
   final double latitude;
   final double longitude;
 
-  location(
+  locationModel(
       {required this.id,
       required this.name,
       required this.latitude,
       required this.longitude});
 
-  factory location.fromJson(dynamic json) {
-    return location(
+  factory locationModel.fromJson(dynamic json) {
+    return locationModel(
       id: json['id'] as int,
       name: json['name'] as String,
       latitude: json['latitude'] as double,
-      longitude: json['latitude'] as double,
+      longitude: json['longitude'] as double,
     );
   }
 
-  static List<location> recipesFromSnapshot(List snapshot) {
+  static List<locationModel> recipesFromSnapshot(List snapshot) {
     return snapshot.map((data) {
-      return location.fromJson(data);
+      return locationModel.fromJson(data);
     }).toList();
   }
 

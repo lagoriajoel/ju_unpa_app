@@ -17,16 +17,16 @@ class _clasificationPageState extends State<clasificationPage> {
   bool _isLoading = true;
 
   Future<void> getEquipos() async {
-    try {
-      equipos = await teamService.getTeamOfSport(widget.id);
-      // equipos = await teamService.getTeamOfSportApi(widget.id);
-
+    final res = await teamService.getTeamOfSport(widget.id);
+    if (res.error != null) {
+      print(res.error! + "errrrrrr");
+    } else {
       setState(() {
         _isLoading = false;
       });
-
+      equipos = res.success;
       print(equipos);
-    } catch (e) {}
+    }
   }
 
   @override

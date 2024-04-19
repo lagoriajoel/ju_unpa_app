@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ju_unpa_app/models/gimnasio.dart';
+import 'package:ju_unpa_app/models/locationModel.dart';
 import 'package:ju_unpa_app/pages/maps_screen.dart';
+import 'package:ju_unpa_app/service/locationService.dart';
 import 'package:location/location.dart';
 
 import 'dart:math' as math;
@@ -15,9 +17,12 @@ class UbicationScreen extends StatefulWidget {
 
 class _UbicationScreen extends State<UbicationScreen> {
   LatLng? startPosition = const LatLng(-46.447975778904144, -67.51982599155225);
-  LatLng endPosition = const LatLng(-46.445754503153175, -67.55101571365178);
-  LatLng? endPosition2 = const LatLng(-46.44197235116889, -67.51084916147663);
+
+  List<locationModel> locations = [];
   List<Gimnasio> gimsList = [];
+  List<Gimnasio> gimsList2 = [];
+
+  bool _isLoading = false;
   Gimnasio gim1 = Gimnasio(
       id: 1,
       nombre: "Gimnasio Mosconi",
@@ -27,10 +32,29 @@ class _UbicationScreen extends State<UbicationScreen> {
       nombre: "Complejo Deportivo",
       position: const LatLng(-46.44197235116889, -67.51084916147663));
 
+  Future<void> getLocation() async {
+    final res = await locationService.getlocationList();
+
+    if (res.error != null) {
+      setState(() {
+        //_isLoading = false;
+        print(res.error! + ' en locations');
+      });
+    } else {
+      setState(() {
+        _isLoading = false;
+      });
+      locations = res.success;
+
+      print(locations);
+    }
+  }
+
   Location location = Location();
 
   @override
   void initState() {
+    getLocation();
     getCorrentLocation();
     gimsList.add(gim1);
     gimsList.add(gim2);
@@ -128,7 +152,8 @@ class _UbicationScreen extends State<UbicationScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: Center(
                     child: ListView.builder(
-                        itemCount: gimsList.length,
+                        // itemCount: gimsList.length,
+                        itemCount: locations.length,
                         itemBuilder: (context, index) {
                           return ElevatedButton(
                               style: ElevatedButton.styleFrom(
@@ -141,20 +166,27 @@ class _UbicationScreen extends State<UbicationScreen> {
                                         builder: (context) => MapScreen(
                                               startPosition: startPosition,
                                               endPosition:
-                                                  gimsList[index].position,
+                                                  //gimsList[index].position,
+                                                  LatLng(
+                                                      locations[index].latitude,
+                                                      locations[index]
+                                                          .longitude),
                                               distance: getDistance(
                                                   startPosition!.latitude,
                                                   startPosition!.longitude,
-                                                  gimsList[index]
-                                                      .position
-                                                      .latitude,
-                                                  gimsList[index]
-                                                      .position
-                                                      .longitude),
+                                                  // gimsList[index]
+                                                  //     .position
+                                                  //     .latitude,
+                                                  // gimsList[index]
+                                                  //     .position
+                                                  //     .longitude
+                                                  locations[index].latitude,
+                                                  locations[index].longitude),
                                             )));
                               },
                               child: Text(
-                                gimsList[index].nombre,
+                                // gimsList[index].nombre,
+                                locations[index].name,
                                 style: TextStyle(color: Colors.white),
                               ));
                         }),

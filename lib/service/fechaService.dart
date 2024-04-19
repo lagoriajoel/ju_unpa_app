@@ -5,9 +5,10 @@ import 'package:ju_unpa_app/constants/constants.dart';
 import 'package:ju_unpa_app/models/fecha.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:ju_unpa_app/util/widgets/Error_handler.dart';
 
 class fechaService {
-  static Future<List<fecha>> getFechaList(int sportId) async {
+  static Future<ErrorHandler> getFechaList(int sportId) async {
     try {
       var url = '${urlAPI}programs/listOfSport/$sportId';
       final uri = Uri.parse(url);
@@ -22,12 +23,12 @@ class fechaService {
           _temp.add(i);
         }
 
-        return fecha.recipesFromSnapshot(_temp);
+        return ErrorHandler(null, fecha.recipesFromSnapshot(_temp));
       }
 
-      throw 'Invalid';
+      throw 'Invalid   asfasfsdfsdfs';
     } catch (e) {
-      rethrow;
+      return ErrorHandler(e.toString(), null);
     }
   }
 

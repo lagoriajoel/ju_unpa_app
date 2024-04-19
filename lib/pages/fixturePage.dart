@@ -16,18 +16,21 @@ class _fixturePageState extends State<fixturePage> {
   bool _isLoading = true;
 
   Future<void> getFecha() async {
-    try {
-      fechas = await fechaService.getFechaList(widget.id);
+    final res = await fechaService.getFechaList(widget.id);
 
+    if (res.error != null) {
+      setState(() {
+        //_isLoading = false;
+        print(res.error!);
+
+        
+      });
+    } else {
       setState(() {
         _isLoading = false;
       });
-
+      fechas = res.success;
       print(fechas);
-    } catch (e) {
-      setState(() {
-        print('Error: ');
-      });
     }
   }
 
@@ -112,15 +115,17 @@ class _fixturePageState extends State<fixturePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: _isLoading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: renderFechas(),
-                ),
-              ));
+        body:
+            //  _isLoading
+            //     ? const Center(
+            //         child: CircularProgressIndicator(),
+            //       )
+            //     :
+            Center(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: renderFechas(),
+      ),
+    ));
   }
 }
