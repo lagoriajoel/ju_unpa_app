@@ -180,7 +180,7 @@ class _MapScreenState extends State<MapScreen> {
                                   ),
                                 ),
                                 Text(
-                                    'Distancias hasta el lugar de disputa del encuentro')
+                                    'Distancia hasta el lugar de disputa del encuentro')
                               ],
                             ));
                       }

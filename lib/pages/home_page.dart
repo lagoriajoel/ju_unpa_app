@@ -59,15 +59,6 @@ class HomePage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // const Text(
-                  //   "UNPA",
-                  //   style: TextStyle(
-                  //       fontSize: 25,
-                  //       color: Colors.white,
-                  //       fontFamily: AutofillHints.birthday,
-                  //       fontWeight: FontWeight.bold,
-                  //       fontStyle: FontStyle.italic),
-                  // ),
                   const SizedBox(
                     height: 280,
                   ),

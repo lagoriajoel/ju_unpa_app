@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ju_unpa_app/pages/disciplinasPage.dart';
 import 'package:ju_unpa_app/pages/home_page.dart';
 import 'package:ju_unpa_app/pages/info_page.dart';
+import 'package:ju_unpa_app/pages/maps_screen.dart';
+import 'package:ju_unpa_app/pages/ubications_screen.dart';
 
 class drawerWidget extends StatelessWidget {
   const drawerWidget({
@@ -62,7 +64,7 @@ class drawerWidget extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: const Text(
-                  'DEPORTES',
+                  'TORNEOS',
                 ),
                 textColor: Colors.white70,
                 onTap: () {
@@ -71,6 +73,23 @@ class drawerWidget extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) => disciplinasPage()));
                 }),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              leading: const Icon(
+                Icons.map,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'UBICACIONES',
+              ),
+              textColor: Colors.white70,
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UbicationScreen()));
+              },
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
